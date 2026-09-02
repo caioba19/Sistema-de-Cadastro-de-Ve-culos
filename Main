@@ -1,77 +1,30 @@
-import java.time.Year;
+public class Main {
+    public static void main(String[] args) {
+        Veiculo veiculo1 = new Veiculo();
+        veiculo1.setMarca("Toyota");
+        veiculo1.setModelo("Corolla");
+        veiculo1.setAno(2022);
+        veiculo1.setQuilometragem(15000);
+        veiculo1.setDisponivel(true);
 
-public class Veiculo {
-    private String marca;
-    private String modelo;
-    private int ano;
-    private double quilometragem;
-    private boolean disponivel;
+        Veiculo veiculo2 = new Veiculo();
+        veiculo2.setMarca("Fiat");
+        veiculo2.setModelo("Argo");
+        veiculo2.setAno(2020);
+        veiculo2.setQuilometragem(32000);
+        veiculo2.setDisponivel(false);
 
-    public String getMarca() {
-        return marca;
-    }
+        System.out.println("--- Veículo 1 ---");
+        veiculo1.exibirDados();
+        veiculo1.realizarLocacao();
+        veiculo1.exibirDados();
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+        System.out.println("\n--- Veículo 2 ---");
+        veiculo2.exibirDados();
+        veiculo2.realizarLocacao();
 
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public double getQuilometragem() {
-        return quilometragem;
-    }
-
-    public void setQuilometragem(double quilometragem) {
-        this.quilometragem = quilometragem;
-    }
-
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
-    public int calcularIdade() {
-        int anoAtual = Year.now().getValue();
-        return anoAtual - ano;
-    }
-
-    public void realizarLocacao() {
-        if (disponivel) {
-            disponivel = false;
-            System.out.println("Locação realizada com sucesso!");
-        } else {
-            System.out.println("Veículo já está alugado.");
-        }
-    }
-
-    public void devolverVeiculo() {
-        disponivel = true;
-        System.out.println("Veículo devolvido com sucesso!");
-    }
-
-    public void exibirDados() {
-        System.out.println("Marca: " + marca);
-        System.out.println("Modelo: " + modelo);
-        System.out.println("Ano: " + ano);
-        System.out.println("Quilometragem: " + quilometragem);
-        System.out.println("Idade: " + calcularIdade());
-        System.out.println("Disponível: " + disponivel);
+        System.out.println("\nDevolvendo veículo 2...");
+        veiculo2.devolverVeiculo();
+        veiculo2.exibirDados();
     }
 }
